@@ -24,6 +24,11 @@ public class CartPage extends BasePage {
 		return obterCelula("cart_summary", "Description", "Faded Short Sleeve T-shirts", "Total").getText();
 	}
 	
+	public String obterValorCompraTotal() {
+		wait.until(ExpectedConditions.textToBePresentInElementLocated(By.xpath("//span[@id='total_price']"), "$62.02"));
+		return obterTexto(By.xpath("//span[@id='total_price']"));
+	}
+	
 	public void prosseguirCompra() {
 		clicarBotao(By.xpath("//span[text()='Proceed to checkout']"));
 	}
@@ -54,5 +59,9 @@ public class CartPage extends BasePage {
 
 	public String confirmaPedidoFinalizado() {
 		return obterTexto(By.xpath("//*[@class='dark' and text()='Your order on My Store is complete.']"));
+	}
+
+	public String confirmaValorPago() {
+		return obterTexto(By.xpath("//span[@class='price']"));
 	}
 }
