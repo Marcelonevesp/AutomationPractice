@@ -28,6 +28,20 @@ public class BasePage {
 		escrever(By.id(id), texto);
 	}
 	
+	/********** Radio e Check **********/
+	
+	public void clicarCheck(By by) {
+		getDriver().findElement(by).click();
+	}
+	
+	public void clicarCheck(String id) {
+		clicarCheck(By.id(id));
+	}
+	
+	public boolean verificarRadioMarcado(String id){
+		return getDriver().findElement(By.id(id)).isSelected();
+	}
+	
 	/********** Botao **********/
 	
 	public void clicarBotao(By by) {
@@ -37,6 +51,8 @@ public class BasePage {
 	public void clicarBotao(String id) {
 		clicarBotao(By.id(id));
 	}
+	
+	/********** Mover mouse para elemento **********/
 	
 	public void moverMouse(By by, String botao) {
 		Actions action = new Actions(getDriver());
@@ -58,6 +74,11 @@ public class BasePage {
 	}
 	
 	/********** Tabelas  **********/
+	
+	public int obterQuantidadeLinhas(By by) {
+		List<WebElement> linhas = getDriver().findElements(by);
+		return linhas.size();
+	}
 	
 	public WebElement obterCelula(String idTabela, String colunaBusca, String valorColunaBusca, String colunaInteracao) {
 		
