@@ -40,7 +40,19 @@ public class CartPage extends BasePage {
 		return verificarRadioMarcado("cgv");
 	}
 
-	public void pagarPorBankWire() {
-		clicarBotao(By.xpath(""));
+	public void selecionarPagamentoPorBankWire() {
+		clicarBotao(By.xpath("//a[@title='Pay by bank wire']"));
+	}
+
+	public String confirmaTipoPagamento() {
+		return obterTexto(By.xpath("//*[@id='center_column']//h3"));
+	}
+	
+	public void confirmarPedido() {
+		clicarBotao(By.xpath("//span[contains(text(), 'I confirm my order')]"));
+	}
+
+	public String confirmaPedidoFinalizado() {
+		return obterTexto(By.xpath("//*[@class='dark' and text()='Your order on My Store is complete.']"));
 	}
 }
